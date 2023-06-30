@@ -1,0 +1,18 @@
+<div class="app">
+  <div class="left-panel">
+    <button (click)="toggle()">Toggle</button>
+
+    <ul class="menu" [class.menu--expanded]="menu.isExpanded">
+      <app-menu-item
+        *ngFor="let item of menu.items"
+        [isCollapsed]="!menu.isExpanded"
+        [menuItem]="item"
+      >
+      </app-menu-item>
+    </ul>
+  </div>
+
+  <div class="content">
+    <span>{{ content | json }}</span>
+  </div>
+</div>

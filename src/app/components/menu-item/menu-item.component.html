@@ -1,0 +1,44 @@
+<ng-container *ngIf="_menuItem !== null">
+  <li
+    class="menu__item menu__item--expanded"
+    *ngIf="!_isCollapsed"
+    (click)="handleMenuItemClick(_menuItem, null)"
+  >
+    <span>{{ _menuItem.text }}</span>
+  </li>
+
+  <li
+    class="menu__item"
+    *ngIf="_isCollapsed"
+    (mouseenter)="handleMenuItemMouseEnter(_menuItem)"
+  >
+    <span>{{ _menuItem.shortcut }}</span>
+  </li>
+
+  <ul
+    class="sub-menu"
+    *ngIf="isExpandableMenuItem(_menuItem) && _menuItem.isExpanded"
+  >
+    <ng-container *ngFor="let childItem of _menuItem.children">
+      <li
+        class="menu__item menu__item--expanded"
+        (click)="handleMenuItemClick(childItem, _menuItem)"
+      >
+        <span>{{ childItem.text }}</span>
+      </li>
+
+      <ul
+        class="sub-menu"
+        *ngIf="isExpandableMenuItem(childItem) && childItem.isExpanded"
+      >
+        <li
+          *ngFor="let subChildItem of childItem.children"
+          class="menu__item menu__item--expanded"
+          (click)="handleMenuItemClick(subChildItem, _menuItem)"
+        >
+          <span>{{ subChildItem.text }}</span>
+        </li>
+      </ul>
+    </ng-container>
+  </ul>
+</ng-container>

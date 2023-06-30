@@ -1,0 +1,39 @@
+.app {
+  display: flex;
+}
+
+.left-panel {
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.menu {
+  list-style: none;
+
+  &.menu--expanded {
+    .menu__item {
+      width: 200px;
+    }
+  }
+}
+
+.menu__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50px;
+  min-height: 50px;
+  padding: 0 12px;
+  border: 1px solid black;
+
+  &.menu__item--active {
+    background-color: aquamarine;
+  }
+}
+
+.sub-menu {
+}
+
+.content {
+  flex-grow: 1;
+}
